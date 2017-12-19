@@ -28,11 +28,9 @@ class Transcoder implements TranscoderInterface
             try {
                 return $transcoder->transcode($string, $from, $to);
             } catch (UnsupportedEncodingException $e) {
-                // Ignore as long as the fallback transcoder is all right
+                return false;
             }
         }
-        
-        throw $e;
     }
 
     /**
